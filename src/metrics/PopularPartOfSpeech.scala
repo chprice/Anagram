@@ -1,0 +1,6 @@
+package metrics
+
+
+class PopularPartOfSpeech {
+
+}
