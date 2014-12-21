@@ -1,0 +1,5 @@
+*.class
+*.cache
+.idea/libraries/*
+project/target/*
+target/*
