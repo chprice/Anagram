@@ -1,13 +1,19 @@
 package project
 
+
+import java.util.Properties
+
+import edu.stanford.nlp.ling.CoreAnnotations._
+import edu.stanford.nlp.ling.CoreLabel
+import edu.stanford.nlp.pipeline.{Annotation, StanfordCoreNLP}
+import edu.stanford.nlp.util.CoreMap
 import models.Anatree
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.language.postfixOps
 
-import cc.factorie._
-import cc.factorie.app.nlp._
+import scala.collection.JavaConversions._
 
 import scala.io.Source
 
@@ -15,7 +21,7 @@ object Main {
   def main(args: Array[String]): Unit = {
 
 
-   /* val anatree = new Anatree()
+    /* val anatree = new Anatree()
 
     for (line <- Source.fromURL(getClass.getResource("/words.txt")).getLines()) {
       anatree.addWord(line.stripLineEnd)
@@ -35,11 +41,16 @@ object Main {
     println(anagrams.size)
     */
 
-    val doc = new Document("Education is the most powerful weapon which you can use to change the world.")
-    DocumentAnnotatorPipeline(pos.OntonotesForwardPosTagger).process(doc)
-    //pos.OntonotesForwardPosTagger.process(doc)
-    for (token <- doc.tokens)
-      println("%-10s %-5s".format(token.string, token.posTag.categoryValue))
+    val text = "The quick brown fox jumped over the lazy dog. Something about a monkey." // Add your text here!
+
+
+    /*for(sentence <- document.get(classOf[SentencesAnnotation])) {
+
+      for (token <- sentence.get(classOf[TokensAnnotation])) {
+        val pos = token.get(classOf[PartOfSpeechAnnotation])
+        println(pos)
+      }
+    }*/
 
   }
 }
