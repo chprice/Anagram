@@ -1,4 +1,4 @@
-package models
+package core.models
 
 import scala.collection.mutable
 

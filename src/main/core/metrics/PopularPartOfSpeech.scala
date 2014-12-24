@@ -1,10 +1,13 @@
-package metrics
+package core.metrics
 
 import java.util.Properties
 
 import edu.stanford.nlp.ling.CoreAnnotations.{PartOfSpeechAnnotation, TokensAnnotation, SentencesAnnotation}
 import edu.stanford.nlp.pipeline.{Annotation, StanfordCoreNLP}
 import scala.collection.JavaConversions._
+
+import main.database.POS
+import main.database.postgresqlContext._
 
 class PopularPartOfSpeech () {
 
@@ -15,10 +18,7 @@ class PopularPartOfSpeech () {
   def getPosTags(text:String): List[String] ={
     val filteredText = text.filterNot(".!?-" contains _)
 
-    // create an empty Annotation just with the given text
     val document = new Annotation(filteredText)
-
-    // run all Annotators on this text
     pipeline.annotate(document)
 
     document.get(classOf[SentencesAnnotation]).flatMap( sentence => {
@@ -27,8 +27,28 @@ class PopularPartOfSpeech () {
       })
     }).toList
 
-    //val annotatedText = filteredText.split("\\s+") zip posTags
   }
 
+  def score(text:String) : Int = {
+    getPOSCount(getPosTags(text).mkString(" "))
+  }
+
+  def getPOSCount(posSeq: String): Int = {
+    transactional {
+      select[POS].where(_.sequence :== posSeq).head.count
+    }
+  }
+
+  def incrementPOSCount(posSeq: String): Unit = {
+    transactional {
+      val seq = select[POS].where(_.sequence :== posSeq)
+      if(seq.isEmpty){
+        new POS(posSeq,1)
+      }
+      else{
+        seq.head.count += 1
+      }
+    }
+  }
 
 }
