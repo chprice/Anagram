@@ -18,3 +18,5 @@ excludedJars in assembly <<= (fullClasspath in assembly) map { cp =>
 }
 
 // your assembly settings here
+
+outputPath in assembly := new File("target/anagram-0.0.1-SNAPSHOT-jar-with-dependencies.jar")
