@@ -3,3 +3,6 @@
 .idea/libraries/*
 project/target/*
 target/*
+projectFilesBackup/.idea/modules/anagram-evalation.iml
+projectFilesBackup/.idea/libraries/SBT__org_scala_lang_scala_library_2_11_2.xml
+projectFilesBackup/.idea/libraries/SBT___scala_compiler_bundle_2_11_2.xml
