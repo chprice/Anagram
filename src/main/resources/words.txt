@@ -525,7 +525,7 @@ activists
 activities
 activity
 actor
-actors
+core.actors
 actress
 actresses
 acts
@@ -33609,7 +33609,7 @@ modelled
 modeller
 modellers
 modelling
-models
+core.models
 modem
 modems
 moderate
