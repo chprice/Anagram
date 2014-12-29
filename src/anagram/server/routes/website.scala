@@ -1,7 +1,7 @@
-package main.server.routes
+package anagram.server.routes
 
 import com.twitter.finatra.Controller
-import core.actors.AnagramRunner
+import anagram.core.actors.AnagramRunner
 
 /**
  * Created by Random on 12/23/2014.

@@ -1,4 +1,4 @@
-package core.actors
+package anagram.core.actors
 
 import core.metrics.PopularPartOfSpeech
 

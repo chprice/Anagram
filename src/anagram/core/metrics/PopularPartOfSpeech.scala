@@ -6,8 +6,8 @@ import edu.stanford.nlp.ling.CoreAnnotations.{PartOfSpeechAnnotation, TokensAnno
 import edu.stanford.nlp.pipeline.{Annotation, StanfordCoreNLP}
 import scala.collection.JavaConversions._
 
-import main.database.POS
-import main.database.postgresqlContext._
+import anagram.database.POS
+import anagram.database.postgresqlContext._
 
 class PopularPartOfSpeech () {
 

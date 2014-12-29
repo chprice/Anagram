@@ -1,8 +1,11 @@
-package core.models
+package anagram.core.models
 
 import scala.collection.mutable
-import scala.concurrent.Future
+//import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import com.twitter.util.Future
+import scala.io.Source
+
 
 /**
  * Created by Random on 9/15/2014.
@@ -39,6 +42,7 @@ class Anatree {
 
   def anagram(word: String): mutable.Set[Future[String]] =
   {
+    println("Starting to anagram: "+word)
     anagram_helper(root, word).map((word:Future[String]) =>{
       word.map((inverse_word: String) =>{
         inverse_word.reverse
@@ -72,4 +76,17 @@ class Anatree {
     solved_anagrams.flatten
   }
 
+}
+
+object Anatree {
+  def apply(filename: String): Anatree = {
+    val a = new Anatree()
+    val start = System.currentTimeMillis
+    for (line <- Source.fromURL(getClass.getResource(filename)).getLines()) { //"/words.txt"
+      a.addWord(line.stripLineEnd)
+    }
+    print("Anatree created in ")
+    println(System.currentTimeMillis - start + "ms")
+    a
+  }
 }

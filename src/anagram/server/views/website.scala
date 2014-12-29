@@ -1,4 +1,4 @@
-package main.server.views
+package anagram.server.views
 
 import com.twitter.finatra.View
 

@@ -1,4 +1,4 @@
-package core.models
+package anagram.core.models
 
 import scala.collection.mutable
 
