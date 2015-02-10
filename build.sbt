@@ -48,13 +48,15 @@ libraryDependencies ++= Seq(
   "edu.stanford.nlp" % "stanford-corenlp" % "3.4",
   "edu.stanford.nlp" % "stanford-corenlp" % "3.4" artifacts(Artifact("stanford-corenlp", "models") ), //artifacts(Artifact("stanford-corenlp", "core/models") ),
   "edu.stanford.nlp" % "stanford-parser" % "3.4",
-  "net.fwbrasil" %% "activate-core" % "1.6.2",
-  "net.fwbrasil" %% "activate-jdbc" % "1.6.2",
   "com.twitter" %% "finatra" % "1.5.4",
-  "io.spray" %%  "spray-json" % "1.3.1"
+  "io.spray" %%  "spray-json" % "1.3.1",
+  "com.typesafe" % "config" % "1.2.1",
+  "org.scalikejdbc" %% "scalikejdbc"       % "2.2.3",
+  "com.h2database"  %  "h2"                % "1.4.185",
+  "ch.qos.logback"  %  "logback-classic"   % "1.1.2"
 )
 
-incOptions := incOptions.value.withNameHashing(true)
+//incOptions := incOptions.value.withNameHashing(true)
 
 // Download and create Eclipse source attachments for library dependencies
 // EclipseKeys.withSource := true

@@ -1,0 +1,10 @@
+{
+  "POSImportFileName": "./Resources/popular_pos_tags.txt",
+
+  "db" : {
+    "url": "jdbc:postgresql://127.0.0.1/postgres",
+    "user": "postgres",
+    "password": "password"
+  }
+
+}
